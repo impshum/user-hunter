@@ -44,13 +44,6 @@ def main():
     else:
         t = ''
 
-    if contact_message:
-        bot_msg = f"\n\n> *^Beep, ^boop, ^I'm ^a ^bot ^and ^this ^action ^was ^performed ^automagically. ^Please ^contact ^u/{contact_user} ^if ^you ^have ^any ^questions ^or ^concerns.*"
-    else:
-        bot_msg = ''
-
-    if not get_stats:
-        stats = ''
 
     print(f"""{C.Y}
 ╦ ╦╔═╗╔═╗╦═╗  ╦ ╦╦ ╦╔╗╔╔╦╗╔═╗╦═╗
@@ -63,11 +56,15 @@ def main():
         for word in title.split(' '):
             if word.startswith(('u/', '/u/')):
                 username = word.replace('/u/', 'u/')
+                things = ''
                 if get_stats:
                     stats = get_psaw_stats(api, username, target_subreddit)
+                    things += stats
+                if contact_message:
+                    things += f"\n\n> *^Beep, ^boop, ^I'm ^a ^bot ^and ^this ^action ^was ^performed ^automagically. ^Please ^contact ^u/{contact_user} ^if ^you ^have ^any ^questions ^or ^concerns.*"
                 if not test_mode:
-                    reply = reply.format(username) + stats + bot_msg
-                    submission.reply(reply)
+                    reply_msg = reply.format(username) + things
+                    submission.reply(reply_msg)
                 print(f'{C.P}{datetime.datetime.now():%H:%M:%S %d/%m/%Y} {C.C}{username}{C.W}')
 
 
