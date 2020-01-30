@@ -18,6 +18,6 @@ Hunts for users mentioned in submission titles and replies with a link to the us
 - Windows users see this post to enable colours in your terminal/prompt: https://recycledrobot.co.uk/words/?print-python-colours
 - Switches are 1 = on, 0 = off
 
----
+### Tip
 
 BTC - 1AYSiE7mhR9XshtS4mU2rRoAGxN8wSo4tK
